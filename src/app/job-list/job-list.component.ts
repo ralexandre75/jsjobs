@@ -11,10 +11,15 @@ import { tap } from 'rxjs/operators';
 })
 export class JobListComponent implements OnInit {
 
+  jobs = [];
+
   constructor(private _httpClient : HttpClient) { }
 
   ngOnInit() {
-    this._httpClient.get('data/jobs.json').pipe(map(x => console.log(x))).subscribe();
+    this._httpClient.get<any>('data/jobs.json')
+      .pipe(map((res => {this.jobs = res})))
+        //console.log(jobs);
+      .subscribe();
   }
 
 }
