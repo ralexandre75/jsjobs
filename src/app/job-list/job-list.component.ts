@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
-import { map } from 'rxjs/operators';
-import { tap } from 'rxjs/operators';
+import { JobService } from './../services/job.service';
+
+
 
 
 @Component({
@@ -12,14 +12,19 @@ import { tap } from 'rxjs/operators';
 export class JobListComponent implements OnInit {
 
   jobs = [];
+  error = '';
 
-  constructor(private _httpClient : HttpClient) { }
+  constructor(private jobService: JobService) { }
 
   ngOnInit() {
-    this._httpClient.get<any>('data/jobs.json')
-      .pipe(map((res => {this.jobs = res})))
-        //console.log(jobs);
-      .subscribe();
+
+    this.jobService.getJobs().subscribe(
+      res => this.jobs = res,
+      error => {
+        console.error(error);
+        this.error = error;
+      }
+    );
   }
 
 }
