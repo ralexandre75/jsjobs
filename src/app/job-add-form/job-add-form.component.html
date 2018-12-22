@@ -5,28 +5,28 @@
 
         <div class="form-group">
 
-          <label for="title">Titre</label>
+          <label for="title">Titre : </label>
           <input type="text" 
                   name="title"
                   class="form-control" 
                   placeholder="titre de votre annonce" 
                   formControlName="title">
 
-          <label for="company">Entreprise</label>
+          <label for="company">Entreprise : </label>
           <input type="text" 
                   name="company"
                   class="form-control" 
                   placeholder="nom de votre entreprise" 
                   formControlName="company">     
 
-          <label for="city">Ville</label>
+          <label for="city">Ville : </label>
           <input type="text" 
                   name="city"
                   class="form-control" 
                   placeholder="ville du poste proposé" 
                   formControlName="city">   
 
-          <label for="zipcode">Code postal</label>
+          <label for="zipcode">Code postal : </label>
           <input type="text" 
                   name="zipcode"
                   class="form-control" 
@@ -38,14 +38,55 @@
 
       <div class="col-sm-6">
         <div class="form-group">
-          <label for="description">Description</label><br>
+          <label for="description">Description : </label><br>
           <textarea name="description" cols="30" rows="10" formControlName="description"></textarea>
         </div>
-        <div class="form-group">
-          <label for="contract">Contrat</label><br>
-          <select name="contract" formControlName="contract">
-            <option *ngFor="let ct of contractTypes" [value]="ct.value">{{ct.name}}</option>
-          </select>
+      </div>
+
+      <div class="col-sm-12">
+        <div class="row">
+          <div class="col-sm-6">
+            <div class="form-group">
+              <label for="contract">Contrat : </label><br>
+              <select name="contract" formControlName="contract">
+                <option *ngFor="let ct of contractTypes" [value]="ct.value">{{ct.name}}</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="salary">Salaire : </label>
+              <input type="text" 
+                    name="salary" 
+                    class="form-control" 
+                    formControlName="salary" 
+                    placeholder="salaire">
+              <select name="currency" formControlName="currency">
+                <option *ngFor="let cur of currencies" [value]="cur.value">{{cur.name}} {{cur.symbol}}</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="experience">Expérience : </label>
+              <select name="experience" formControlName="experience">
+                <option *ngFor="let exp of experiences" [value]="exp.value">{{exp.name}}</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="status">Status : </label>
+              <select name="status" formControlName="status">
+                <option *ngFor="let status of statuses" [value]="status.value">{{status.name}}</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="area">Déplacement : </label>
+                <div *ngFor="let area of areas">
+                  <input type="radio"
+                          [id]='"btn-" + area.value'
+                          name="area"
+                          [value]="area.value"
+                          formControlName="area"
+                          ><label [for]='"btn-" + area.value'>{{area.name}}</label>
+                </div>
+            </div>
+          </div>
         </div>
       </div>
 
