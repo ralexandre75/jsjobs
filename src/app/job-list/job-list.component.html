@@ -1,5 +1,9 @@
 <p>
   job-list works!
 </p>
-  <div *ngFor="let job of jobs"> {{ job.title }} </div>
+  <div *ngFor="let job of jobs"> {{ job.title }} 
+    <div>
+      parue il y a {{job.publishdate | daysAgo}}
+    </div>
+  </div>
 
