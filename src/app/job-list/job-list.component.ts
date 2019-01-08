@@ -11,6 +11,7 @@ import { JobService } from './../services/job.service';
 })
 export class JobListComponent implements OnInit {
 
+  initialJobs = [];
   jobs = [];
   error = '';
 
@@ -29,6 +30,7 @@ export class JobListComponent implements OnInit {
     this.jobService.jobsSubject.subscribe(data => {
       console.log(data);
       this.jobs = [data, ...this.jobs];
+      
     })
   }
 

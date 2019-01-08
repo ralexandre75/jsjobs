@@ -11,6 +11,9 @@ import { SearchComponent } from './search/search.component';
 import { JobListComponent } from './job-list/job-list.component';
 import { JobAddFormComponent } from './job-add-form/job-add-form.component';
 import { DaysAgoPipe } from './pipes/days-ago.pipe';
+import { HomeComponent } from './home/home.component';
+import { JobDetailsComponent } from './job-details/job-details.component';
+import { AboutComponent } from './about/about.component';
 
 @NgModule({
   declarations: [
@@ -18,7 +21,10 @@ import { DaysAgoPipe } from './pipes/days-ago.pipe';
     SearchComponent,
     JobListComponent,
     JobAddFormComponent,
-    DaysAgoPipe
+    DaysAgoPipe,
+    HomeComponent,
+    JobDetailsComponent,
+    AboutComponent
   ],
   imports: [
     BrowserModule,
