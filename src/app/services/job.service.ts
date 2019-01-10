@@ -13,6 +13,7 @@ export class JobService {
   initialJobs = [];
   jobs = [];
   jobsSubject = new Subject();
+  BASE_URL = "http://localhost:4201/";
 
   constructor(private _httpClient: HttpClient) { }
 
@@ -35,7 +36,7 @@ export class JobService {
 
     } else if (this.jobs.length > 0 && this.initialJobs.length === 0) {
       console.log("case else if");
-      return this._httpClient.get<any>('data/jobs.json')
+      return this._httpClient.get<any>(this.BASE_URL + "api/jobs")
       .pipe( 
             map(res => res),
             tap(data => {this.initialJobs = data; this.jobs = [...this.jobs, ...this.initialJobs]}
@@ -46,7 +47,7 @@ export class JobService {
 
     } else {}
       console.log("case else");
-      return this._httpClient.get<any>('data/jobs.json')
+      return this._httpClient.get<any>(this.BASE_URL + "api/jobs")
       .pipe( 
             map(res => res),
             tap(data => this.initialJobs = data

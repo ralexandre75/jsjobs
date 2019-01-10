@@ -5,6 +5,11 @@ let data = require('./jobs')
 
 app.use(bodyParser.json());
 
+app.use((req, res, next) => {
+    res.header('Access-Control-Allow-Origin', '*');
+    next();
+});
+
 const api = express.Router();
 
 api.get('/jobs', (req, res) => {
