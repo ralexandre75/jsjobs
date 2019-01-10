@@ -27,7 +27,7 @@ export class JobService {
           map(res => res)
           
           
-          ));*/ 
+          )); 
 
     if(this.jobs.length > 0 && this.initialJobs.length > 0) {
       console.log("case if");
@@ -55,13 +55,26 @@ export class JobService {
           
           ));
 
+*/
 
+      return this._httpClient.get<any>(this.BASE_URL + "api/jobs")
+      .pipe( 
+            map(res => res)
+            );
     
   }
 
   addJob(jobData){
-    jobData.id = Date.now();
-    this.jobs = [jobData, ...this.jobs];
-    return this.jobsSubject.next(jobData);
+    //jobData.id = Date.now();
+    //this.jobs = [jobData, ...this.jobs];
+    //return this.jobsSubject.next(jobData);
+
+    return this._httpClient .post<any>(this.BASE_URL + "api/jobs", jobData)
+                            .pipe(
+                                map(res => {
+                                  console.log(res);
+                                  this.jobsSubject.next(jobData);
+                                })
+                            );
   }
 }
