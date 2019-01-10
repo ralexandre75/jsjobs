@@ -1,7 +1,7 @@
 
   <div class="card" *ngFor="let job of jobs"> 
     <div class="card-header">
-      <h3 class="card-title"> {{job.title}} </h3>
+      <h3 class="card-title"><a href=# [routerLink]="['/jobs', job.id]">{{job.title}}</a>  </h3>
       <div>{{job.company}} - {{ job.city }} - {{ job.zipcode }}</div>
     </div>
 
