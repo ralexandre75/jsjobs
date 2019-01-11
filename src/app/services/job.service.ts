@@ -77,4 +77,11 @@ export class JobService {
                                 })
                             );
   }
+
+  getJob(id){
+    return this._httpClient.get<any>(this.BASE_URL + `api/jobs/${id}`)
+                            .pipe(
+                              map(res => res)
+                            );
+  }
 }
