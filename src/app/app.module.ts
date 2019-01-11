@@ -14,6 +14,7 @@ import { DaysAgoPipe } from './pipes/days-ago.pipe';
 import { HomeComponent } from './home/home.component';
 import { JobDetailsComponent } from './job-details/job-details.component';
 import { AboutComponent } from './about/about.component';
+import { ToShortDatePipe } from './pipes/to-short-date.pipe';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import { AboutComponent } from './about/about.component';
     DaysAgoPipe,
     HomeComponent,
     JobDetailsComponent,
-    AboutComponent
+    AboutComponent,
+    ToShortDatePipe
   ],
   imports: [
     BrowserModule,
