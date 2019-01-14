@@ -84,4 +84,12 @@ export class JobService {
                               map(res => res)
                             );
   }
+
+  searchJob(criteria){
+    console.log(criteria);
+    return this._httpClient.get<any>(`${this.BASE_URL}api/search/${criteria.term}/${criteria.place}`)
+                            .pipe(
+                              map(res => res)
+                            );
+  }
 }

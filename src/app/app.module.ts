@@ -17,6 +17,7 @@ import { AboutComponent } from './about/about.component';
 import { ToShortDatePipe } from './pipes/to-short-date.pipe';
 import { ToMoneySymbolPipe } from './pipes/to-money-symbol.pipe';
 
+
 @NgModule({
   declarations: [
     AppComponent,
