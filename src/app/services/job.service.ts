@@ -13,6 +13,8 @@ export class JobService {
   initialJobs = [];
   jobs = [];
   jobsSubject = new Subject();
+  searchResultSubject = new Subject();
+
   BASE_URL = "http://localhost:4201/";
 
   constructor(private _httpClient: HttpClient) { }
@@ -89,7 +91,8 @@ export class JobService {
     console.log(criteria);
     return this._httpClient.get<any>(`${this.BASE_URL}api/search/${criteria.term}/${criteria.place}`)
                             .pipe(
-                              map(res => res)
+                              map(res => res),
+                              tap(res => this.searchResultSubject.next(res))
                             );
   }
 }
