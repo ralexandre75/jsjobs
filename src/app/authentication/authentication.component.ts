@@ -15,6 +15,15 @@ export class AuthenticationComponent implements OnInit {
   constructor(private authService: AuthService) { }
 
   ngOnInit() {
+
+    if(localStorage.getItem('jbb-Data')) {
+      this.refreshFlags();
+    }
+  }
+
+  refreshFlags(){
+    this.isAuthenticated = true;
+    this.welcomeMessage = 'Bienvenue';
   }
 
   login(formData) {
@@ -28,8 +37,7 @@ export class AuthenticationComponent implements OnInit {
   handleLoginSuccess(data){
     console.log('success', data);
     this.jbbData = data;
-    this.isAuthenticated = true;
-    this.welcomeMessage = 'Bienvenue';
+    this.refreshFlags();
     localStorage.setItem('jbbData', JSON.stringify(data));
   }
 
