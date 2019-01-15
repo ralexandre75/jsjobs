@@ -28,6 +28,10 @@ export class AuthService {
   }
 
   register(credentials){
-    console.log('register', credentials);
+    //console.log('register', credentials);
+    return this._httpClient.post<any>(`${this.BASE_URL}/register`, credentials)
+                            .pipe(
+                              map(res => res)
+                            );
   }
 }

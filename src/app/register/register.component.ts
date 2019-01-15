@@ -14,7 +14,21 @@ export class RegisterComponent implements OnInit {
   }
 
   register(formData){
-    this.authService.register(formData);
+    this.authService.register(formData)
+                    .subscribe(
+                      data => this.handleRegisterSuccess(data),
+                      error => this.handleRegisterError(error)
+                    );
+  }
+
+  handleRegisterSuccess(data){
+    console.log('success', data);
+    localStorage.setItem('jbb-data', JSON.stringify(data));
+  }
+
+  handleRegisterError(error){
+    console.log('failure', error);
+
   }
 
 }

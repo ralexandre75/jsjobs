@@ -2,21 +2,21 @@
   <h3>Créer un compte</h3>
   <form #registerForm="ngForm" (ngSubmit)="register(registerForm.value)">
     <input type="text"
-            class="login-input"
+            class="register-input"
             ngModel
             name="email"
             placeholder="email"
             required
     >
     <input type="password"
-            class="login-input"
+            class="register-input"
             ngModel
             name="password"
             placeholder="mot de passe"
             required
     >
     <input type="password"
-    class="login-input"
+    class="register-input"
     ngModel
     name="confirm-password"
     placeholder="confirmer le mot de passe"
