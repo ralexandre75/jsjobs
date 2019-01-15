@@ -19,6 +19,7 @@ import { ToShortDatePipe } from './pipes/to-short-date.pipe';
 import { ToMoneySymbolPipe } from './pipes/to-money-symbol.pipe';
 import { SearchResultComponent } from './search-result/search-result.component';
 import { AuthenticationComponent } from './authentication/authentication.component';
+import { RegisterComponent } from './register/register.component';
 
 
 @NgModule({
@@ -34,7 +35,8 @@ import { AuthenticationComponent } from './authentication/authentication.compone
     ToShortDatePipe,
     ToMoneySymbolPipe,
     SearchResultComponent,
-    AuthenticationComponent
+    AuthenticationComponent,
+    RegisterComponent
   ],
   imports: [
     BrowserModule,

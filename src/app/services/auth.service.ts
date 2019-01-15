@@ -26,4 +26,8 @@ export class AuthService {
   logOut(){
     localStorage.removeItem('jbbData');
   }
+
+  register(credentials){
+    console.log('register', credentials);
+  }
 }
