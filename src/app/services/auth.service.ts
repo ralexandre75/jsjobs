@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { map } from 'rxjs/operators';
 import { tap } from 'rxjs/operators';
+import * as jwtDecode from 'jwt-decode';
 
 @Injectable({
   providedIn: 'root'
@@ -9,6 +10,8 @@ import { tap } from 'rxjs/operators';
 export class AuthService {
 
   BASE_URL= "http://localhost:4201/auth"
+  TOKEN_NAME = 'jbb-token';
+  decodedToken = null;
 
   constructor(private _httpClient: HttpClient) { }
 
@@ -21,10 +24,12 @@ export class AuthService {
 
   userIsLoggedIn(){
     return localStorage.getItem('jbbData');
+    return localStorage.getItem(this.TOKEN_NAME);
   }
 
   logOut(){
     localStorage.removeItem('jbbData');
+    localStorage.removeItem(this.TOKEN_NAME);
   }
 
   register(credentials){
@@ -33,5 +38,9 @@ export class AuthService {
                             .pipe(
                               map(res => res)
                             );
+  }
+
+  decodeToken(token){
+    return jwtDecode(token);
   }
 }

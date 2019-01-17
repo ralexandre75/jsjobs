@@ -7,6 +7,7 @@ import { JobAddFormComponent } from './job-add-form/job-add-form.component';
 import { AboutComponent } from './about/about.component';
 import { AuthenticationComponent } from './authentication/authentication.component';
 import { RegisterComponent } from './register/register.component';
+import { UserProfileComponent } from './user-profile/user-profile.component'
 
 const routes: Routes = [
   { path: '', component: HomeComponent},
@@ -15,7 +16,8 @@ const routes: Routes = [
   { path: 'about', component: AboutComponent},
   { path: 'jobs', component: JobListComponent},
   { path: 'login', component: AuthenticationComponent},
-  { path: 'register', component: RegisterComponent}
+  { path: 'register', component: RegisterComponent},
+  { path: 'profile', component: UserProfileComponent },
   
 ];
 

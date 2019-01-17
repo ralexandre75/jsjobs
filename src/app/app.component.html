@@ -6,23 +6,26 @@
       </a>
       <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
         <li>
-          <a href="#" routerLink="/jobs">Offres</a>
+          <a href="#"class="" routerLink="/jobs">offres</a>
         </li>
         <li>
-            <a href="#" routerLink="/jobs/add">Créer une offres</a>
+          <a href="#"class="" routerLink="/jobs/add">créer une offre</a>
         </li>
         <li>
-            <a href="#" routerLink="/about">A propos</a>
+          <a href="#"class="" routerLink="/about">à propos</a>
         </li>
-        <li>
-          <a href="#" routerLink="/login" *ngIf="!authService.userIsLoggedIn()">Se connecter</a>
+        <li *ngIf="!authService.userIsLoggedIn()">
+          <a href="#" class="" routerLink="/login">se connecter</a>
         </li>
-        <li>
-          <a href="#" (click)="authService.logOut()" *ngIf="authService.userIsLoggedIn()">Se déconnecter</a>
-        </li>
-        <li>
-          <a href="#" routerLink="/register" *ngIf="!authService.userIsLoggedIn()">Créer un compte</a>
-        </li>
+        <li *ngIf="authService.userIsLoggedIn()">
+          <a href="#" class="" routerLink="/profile">mon profile</a>
+        </li>         
+        <li *ngIf="authService.userIsLoggedIn()">
+          <a href="#" class="" (click)="authService.logOut()">se déconnecter</a>
+        </li>        
+        <li *ngIf="!authService.userIsLoggedIn()">
+          <a href="#" class="" routerLink="/register">créer un compte</a>
+        </li>        
       </ul>
     </div>
   </div>
