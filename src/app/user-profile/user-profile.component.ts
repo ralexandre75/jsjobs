@@ -8,15 +8,20 @@ import { AuthService } from '../services/auth.service';
 })
 export class UserProfileComponent implements OnInit {
 
-  decodedToken =null;
+  decodedToken = null;
+  isAdmin = false;
 
   constructor(private authService: AuthService) { }
 
   ngOnInit() {
     if(this.authService.userIsLoggedIn()){
-      const jbbData = JSON.parse(localStorage.getItem('jbb-data'));
+      const jbbData = JSON.parse(localStorage.getItem('jbb-data')); 
+      console.log(jbbData);
       this.decodedToken = this.authService.decodeToken(jbbData.token);
       console.log(this.decodedToken);
+      if (this.decodedToken && this.decodedToken.role === 'admin') {
+        this.isAdmin =true;
+      }
     }
   }
 
