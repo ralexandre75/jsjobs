@@ -4,7 +4,10 @@ const bodyParser = require('body-parser');
 let data = require('./jobs');
 let initialJobs = data.jobs;
 let addedJobs = [];
-users = [{id: 1, email: 'sm@test.fr', nickname: 'Tutu', password: 'aze', role: admin}];
+users = [
+            {id: 1, email: 'sm@test.fr', nickname: 'Tutu', password: 'aze', role: 'admin'},
+            {id: 2, email: 'sm2@test.fr', nickname: 'Tutu2', password: 'qsd', role: 'user'}
+        ];
 
 //const fakeUser = {id: 1, email: 'sm@test.fr', nickname: 'Tutu', password: 'aze'};
 const jwt = require('jsonwebtoken');
@@ -32,12 +35,20 @@ auth.post('/login', (req, res) => {
         const password = req.body.password.toLocaleLowerCase();
         const index = users.findIndex(user => user.email === email);
 
-        //if(email === fakeUser.email && password === fakeUser.password)
+        //if(email === fakeUser.email && password === fakeUser.password)         
         if(index > -1 && users[index].password === password){
-            delete req.body.password;
+            let user = users[index];
+            let token = '';
+            if (user.email === 'sm@test.fr'){
+                token = jwt.sign({ iss: 'http://localhost:4201', role: 'admin', email: req.body.email}, secret);
+            } else {
+                token = jwt.sign({ iss: 'http://localhost:4201', role: 'user', email: req.body.email}, secret);
+            }
+            
             // res.json({ success: true, data: req.body});
-            const token = jwt.sign({ iss: 'http://localhost:4201', role: 'admin', email: req.body.email}, secret)
+            
             res.json({success: true, token: token});
+            
         } else {
             res.status(401).json({ success: false, message: 'identifiants incorrects'});
         }
