@@ -70,13 +70,26 @@ auth.post('/register', (req, res) => {
     }
 });
 
-
 api.get('/jobs', (req, res) => {
     // res.json({ success: true, message: 'hello world'});
     // res.json(data.jobs);
     res.json(getAllJobs());
 });
-api.post('/jobs', (req, res) => {
+
+const checkUserToken = (req,res, next) => {
+    // Authorization: Bearer azeeaaeazeeaazzeaz123azezaeezeaeze
+    if(!req.header('authorization')) {
+        return res.status(401).json({ success: false, message: "Header d'authentification manquant"});
+    }
+
+    const authorizationParts = req.header('authorization').split();
+    let token = authorization = jwt.verify(token, secret);
+    console.log('decodedToken', decodedToken);
+    next();
+};
+
+
+api.post('/jobs', checkUserToken, (req, res) => {
     console.log('****************************')
     const job = req.body;
     addedJobs = [job, ...addedJobs]
