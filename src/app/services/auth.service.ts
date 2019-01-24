@@ -23,13 +23,13 @@ export class AuthService {
   }
 
   userIsLoggedIn(){
-    return localStorage.getItem('jbbData');
+    return !!localStorage.getItem('jbbData');
     return localStorage.getItem(this.TOKEN_NAME);
   }
 
   logOut(){
     localStorage.removeItem('jbbData');
-    localStorage.removeItem(this.TOKEN_NAME);
+    //localStorage.removeItem(this.TOKEN_NAME);
   }
 
   register(credentials){

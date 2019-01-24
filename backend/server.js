@@ -83,7 +83,8 @@ const checkUserToken = (req,res, next) => {
     }
 
     const authorizationParts = req.header('authorization').split();
-    let token = authorization = jwt.verify(token, secret);
+    let token = authorizationParts[1];
+    const decodedToken = jwt.verify(token, secret);
     console.log('decodedToken', decodedToken);
     next();
 };
